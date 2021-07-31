@@ -1,0 +1,42 @@
+nav.sidebar {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  margin-top: 3rem;
+}
+
+nav.sidebar a {
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+  display: block;
+}
+
+nav.sidebar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+nav.sidebar a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+nav.sidebar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav.sidebar .sidebar-header {
+  font-weight: bold;
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+  display: block;
+}

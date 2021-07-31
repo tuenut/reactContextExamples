@@ -1,0 +1,38 @@
+nav.headbar {
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
+
+nav.headbar a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+nav.headbar a.headbar-nav-brand {
+  background-color: #2196F3;
+}
+
+nav.headbar a.headbar-nav-brand:hover {
+  background-color: #69bbf3;
+}
+
+nav.headbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+nav.headbar a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+nav.headbar > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

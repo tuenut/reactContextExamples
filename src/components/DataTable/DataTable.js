@@ -1,13 +1,12 @@
 import React from "react";
 
-
 import {
-  withFiltersContext, 
+  withFiltersContext,
   useFiltersContext
 } from "./FiltersContext";
 
 
-const TableHead = ({fields=[]}) => {
+const TableHead = ({fields = []}) => {
 
   return (
     <thead>
@@ -17,49 +16,49 @@ const TableHead = ({fields=[]}) => {
           {field.name || field}
         </th>
       ))}
-      </tr>
+    </tr>
     </thead>
   );
-}
+};
 
-const TableBody = ({data=[], fields=[]}) => {
+const TableBody = ({data = [], fields = []}) => {
 
   return (
     <tbody>
-      {data.map((dataItem, idx) => (
-        <tr key={idx}>
-          {fields.map((field, idx) => (
-            <td key={idx}>
-              {dataItem[field]}
-            </td>
-          ))}
-        </tr>
-      ))}
+    {data.map((dataItem, idx) => (
+      <tr key={idx}>
+        {fields.map((field, idx) => (
+          <td key={idx}>
+            {dataItem[field]}
+          </td>
+        ))}
+      </tr>
+    ))}
     </tbody>
   );
-}
+};
 
 const Filter = ({filterConfig}) => {
   const [filtersState, dispatch] = useFiltersContext();
 
   let filterLabel, filterField, filterType;
 
-  if (typeof filterConfig === "string") {
+  if ( typeof filterConfig === "string" ) {
     filterLabel = filterField = filterConfig;
   } else {
     ({
       label: filterLabel,
-      field: filterField, 
+      field: filterField,
       type: filterType
     } = filterConfig);
   }
 
-  if (!filterType) filterType = "text";
+  if ( !filterType ) filterType = "text";
 
   const inputId = `data-table-filter-field-${filterField}`;
 
   const handleOnChange = (e) => dispatch({
-    type: filterField, 
+    type: filterField,
     payload: e.target.value
   });
 
@@ -69,14 +68,14 @@ const Filter = ({filterConfig}) => {
         {filterLabel}
       </label>
       <input
-        id={inputId} 
+        id={inputId}
         type={filterType}
         onChange={handleOnChange}
         value={filtersState[filterField]}
       />
     </div>
   )
-}
+};
 
 const DataTableFilters = ({filters, data, changeDisplayedData}) => {
   const [filtersState] = useFiltersContext();
@@ -84,20 +83,18 @@ const DataTableFilters = ({filters, data, changeDisplayedData}) => {
   React.useEffect(() => {
     const activeFilters = Object.entries(filtersState)
       .filter(([filterName, filterValue]) => {
-        if (filterName === "page" || filterName === "pageSize") {
-          return false;
-        } else if (!filterValue) {
+        if ( filterName === "page" || filterName === "pageSize" ) {
           return false;
         } else {
-          return true;
+          return Boolean(filterValue);
         }
       });
 
     const filteredData = activeFilters.length
       ? data.filter((dataItem) => {
-          return activeFilters.every(([field, value]) => 
-            dataItem[field].toString().includes(value))
-        })
+        return activeFilters.every(([field, value]) =>
+          dataItem[field].toString().includes(value))
+      })
       : data;
 
     changeDisplayedData(filteredData);
@@ -106,15 +103,15 @@ const DataTableFilters = ({filters, data, changeDisplayedData}) => {
   return (
     <div>
       {filters.map((filter, idx) => (
-        <Filter key={idx} filterConfig={filter} />
+        <Filter key={idx} filterConfig={filter}/>
       ))}
     </div>
   )
-}
+};
 
 
 export const DataTable = ({fields, data}) => {
-  
+
   return (
     <div className={"data-table-container"}>
       <table className={"data-table"}>
@@ -132,7 +129,7 @@ export const DataTableComposite = withFiltersContext(({fields, data, filters}) =
   return (
     <div className={"data-table"}>
       {filters.length && (
-        <DataTableFilters 
+        <DataTableFilters
           filters={filters}
           changeDisplayedData={setDisplayedData}
           data={data}
