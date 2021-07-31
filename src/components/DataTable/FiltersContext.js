@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const defaultState = {
+const defaultFiltersState = {
   page: 0,
   pageSize: 25
 };
@@ -18,7 +18,7 @@ export const setPageSize = () =>
 export const setCounterTo = (value) => 
   ({type: CLEAR_FILTERS, payload: value});
 
-const reducer = (state, action) => {
+const filtersReducer = (state, action) => {
   switch (action.type) {
     case SET_PAGE:
       return ({
@@ -38,27 +38,33 @@ const reducer = (state, action) => {
         counter: parseInt(action.payload)
       });
 
-    case RESET_COUNTER:
-      return ({
-        ...state,
-        counter: 0
-      })
-
     default:
-      return state;
+      if (action.type.toLowerCase() in state) {
+        return ({
+          ...state,
+          [action.type.toLowerCase()]: action.payload
+        });
+      } else {
+        return state;
+      }
   }
 }
 
 
-const Context = React.createContext();
+const FiltersContext = React.createContext();
 
-export const ContextProvider = (props) => {
+export const FiltersContextProvider = (props) => {
+  const customFilters = props.filters 
+    ? Object.assign({}, ...props.filters.map((filter) => 
+        ({
+          [filter.field || filter]: filter.defaultValue || ""})
+      ))
+    : {};
+
   const [state, dispatch] = React.useReducer(
-    reducer,
-    createDefaultState(props.defaultCounter)
+    filtersReducer,
+    {...customFilters, ...defaultFiltersState}
   );
-
-  console.log({props});
 
   const value = React.useMemo(
     () => [state, dispatch],
@@ -66,13 +72,13 @@ export const ContextProvider = (props) => {
   );
 
   return (
-    <Context.Provider value={value} {...props}/>
+    <FiltersContext.Provider value={value} {...props}/>
   );
 }
 
-export const useContext = () => React.useContext(Context);
-export const withContext = (Component) => ({defaultCounter, ...props}) => (
-  <ContextProvider defaultCounter={defaultCounter}>
+export const useFiltersContext = () => React.useContext(FiltersContext);
+export const withFiltersContext = (Component) => (props) => (
+  <FiltersContextProvider filters={props.filters}>
     <Component {...props}/>
-  </ContextProvider>
-)
+  </FiltersContextProvider>
+);

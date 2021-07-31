@@ -7,7 +7,7 @@ const genString =  (length = 16) =>
       String.fromCharCode(random(122, 97))
     ).join("");
 
-export const data = Array(100).map((item, idx) => ({
+export const data = range(0, 100).map((item, idx) => ({
   id: idx,
   name: genString(random(10, 4)),
   data: random(999999, 100000),
