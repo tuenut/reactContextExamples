@@ -27,8 +27,16 @@ nav.sidebar a.active {
   color: white;
 }
 
-nav.sidebar > ul {
+nav.sidebar ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+nav.sidebar .sidebar-header {
+  font-weight: bold;
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+  display: block;
 }
