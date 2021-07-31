@@ -1,12 +1,15 @@
 nav.sidebar {
-  height: 100%;
-  width: 200px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
   background-color: #111;
   overflow-x: hidden;
+  z-index: 1;
+  /* Make it fixes, means ignore page scrolling.  */
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* Set sizes. Use width as margin-left for content. */
+  height: 100%;
+  width: 13rem;
+  /* Indent from headbar, should use the same margin as height in headbar. */
   margin-top: 3rem;
 }
 

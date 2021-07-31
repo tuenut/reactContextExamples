@@ -1,4 +1,8 @@
-.content {
-  margin-left: 200px;
-  padding-left: 20px;
+main {
+  /* Indent from sidebar, should use the same margin as width in sidebar. */
+  margin-left: 13rem;
+  padding-left: 1rem;
+  /* Indent from headbar, should use the same margin as height in headbar. */
+  margin-top: 3rem;
+  padding-top: 1rem;
 }
