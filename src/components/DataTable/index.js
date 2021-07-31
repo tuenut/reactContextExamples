@@ -1,10 +1,10 @@
 import React from "react";
 
-import {data}  from "./data";
+import { data } from "./data";
 import DataTable from "./DataTable";
 
+import "./styles.css"
 
-// console.debug({data});
 
 const FIELDS = ["id", "name", "data", "type"];
 const FILTERED_FIELDS = [
@@ -18,11 +18,11 @@ export const DataTableExample = () => {
 
   return (
     <div>
-      <DataTable 
-        fields={FIELDS} 
-        data={data} 
+      <DataTable
+        fields={FIELDS}
+        data={data}
         filters={FILTERED_FIELDS}
       />
     </div>
   )
-}
+};

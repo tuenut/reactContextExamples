@@ -1,18 +1,22 @@
-import { StrictMode } from "react";
+import React from "react";
+
 import ReactDOM from "react-dom";
-import { HashRouter} from "react-router-dom";
+
+import { HashRouter } from "react-router-dom";
+
+import { App } from "./components/App";
 
 import "./styles.css";
 
 
-import {App} from "./components/App";
+ReactDOM.render((
+    <React.StrictMode>
+      <HashRouter>
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(
-  <StrictMode>
-    <HashRouter>
-      <App />
-    </HashRouter>
-  </StrictMode>,
-  rootElement
+        <App/>
+
+      </HashRouter>
+    </React.StrictMode>
+  ),
+  document.getElementById("root")
 );

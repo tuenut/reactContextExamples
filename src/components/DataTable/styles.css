@@ -1,0 +1,21 @@
+table.data-table {
+  border: 1px black solid;
+  border-collapse: collapse;
+}
+
+table.data-table > thead {
+  font-weight: bold;
+  background-color: lightgrey;
+}
+
+table.data-table > thead > tr > th {
+  border: 1px black solid;
+  border-bottom: 2px black solid;
+  padding: 1rem;
+}
+
+table.data-table > tbody > tr > td {
+  border: 1px black solid;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
