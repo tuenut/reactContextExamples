@@ -19,7 +19,7 @@ export const TheContent = () => {
       (route.path === location.pathname)
     );
 
-    const suffix = currentRoute ? ": " + currentRoute : "";
+    const suffix = currentRoute?.title ? ": " + currentRoute.title : "";
 
     document.title = `${TITLE}${suffix}`;
   }, [location]);
