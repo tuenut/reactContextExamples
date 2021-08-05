@@ -42,15 +42,15 @@ export const TheSidebar = () => {
 
   return (
     <nav className={"sidebar"}>
-      <div className={"sidebar-header"}>
-        Examples
-      </div>
-
       <ul>
         {navigation.map((navItem) => (
           <SidebarNavLinkItem {...navItem}/>
         ))}
       </ul>
+
+      <button>
+        Collapse
+      </button>
     </nav>
   );
 };

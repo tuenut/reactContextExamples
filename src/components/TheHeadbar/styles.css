@@ -14,13 +14,14 @@ nav.headbar a {
   display: block;
   color: black;
   text-align: center;
-  padding: 14px 16px;
+  /*padding: 0.9rem;*/
   text-decoration: none;
   font-size: 17px;
 }
 
 nav.headbar a.headbar-nav-brand {
   background-color: #2196F3;
+  width: 13rem;
 }
 
 nav.headbar a.headbar-nav-brand:hover {
@@ -37,8 +38,11 @@ nav.headbar a.active {
   color: white;
 }
 
-nav.headbar > ul {
+nav.headbar ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+nav.headbar ul li{
+  height: 100%;
 }

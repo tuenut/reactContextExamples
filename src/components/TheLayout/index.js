@@ -6,10 +6,12 @@ import { TheSidebar } from "../TheSidebar";
 
 
 export const TheLayout = () => {
+  const [showSideMenu, setShowSideMenu] = React.useState(true);
+
   return (
     <div className={"the-layout"}>
-      <TheHeadbar/>
-      <TheSidebar/>
+      <TheHeadbar showSideMenu={showSideMenu}/>
+      <TheSidebar showSideMenu={showSideMenu} setShowSideMenu={setShowSideMenu}/>
       <TheContent/>
     </div>
   );

@@ -8,9 +8,10 @@ import { HOME_PATH, ABOUT_PATH, CONTACTS_PATH } from "../../settings/routePaths"
 
 const headbarNavigation = [
   {
-    label: "TU",
+    label: "TU Examples",
     linkTo: HOME_PATH,
-    brand: true
+    brand: true,
+    classes: ""
   },
   {
     label: "About",
@@ -23,7 +24,7 @@ const headbarNavigation = [
 ];
 
 
-const HeadbarNavLink = ({label, linkTo, brand}) => {
+const HeadbarNavLink = ({label, linkTo, brand, classes}) => {
   const location = useLocation();
 
   let linkClasses = ["headbar-nav-link"];
@@ -34,6 +35,10 @@ const HeadbarNavLink = ({label, linkTo, brand}) => {
 
   if ( location.pathname === linkTo ) {
     linkClasses.push("headbar-nav-link-active")
+  }
+
+  if (classes) {
+    linkClasses.push(classes);
   }
 
   return (
