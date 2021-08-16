@@ -2,8 +2,11 @@ import React from "react";
 
 import { Link, useLocation } from "react-router-dom";
 
-import "./styles.css";
-import { HOME_PATH, ABOUT_PATH, CONTACTS_PATH } from "../../settings/routePaths";
+import {
+  HOME_PATH,
+  ABOUT_PATH,
+  CONTACTS_PATH
+} from "../../settings/routePaths";
 
 
 const headbarNavigation = [

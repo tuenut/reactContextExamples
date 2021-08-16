@@ -1,0 +1,8 @@
+/* Reset some browser styles */
+body {
+  margin: 0;
+}
+
+.App {
+  font-family: sans-serif;
+}

@@ -5,8 +5,6 @@ import { Switch, Route, useLocation, Redirect } from "react-router-dom";
 import routes from "../../settings/routes";
 import {HOME_PATH} from "../../settings/routePaths";
 
-import "./styles.css";
-
 
 const TITLE = "Tuenut React Sandbox";
 

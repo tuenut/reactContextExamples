@@ -9,7 +9,7 @@ import {
   resetCounter
 } from "./Context";
 
-import "./styles.css";
+import "../../styles/Counter.css";
 
 
 export const Counter = withCounterContext(({label: titleLabel, className = ""}) => {

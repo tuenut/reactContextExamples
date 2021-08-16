@@ -1,8 +1,10 @@
 import React from "react";
 
-import { TheContent } from "../TheContent";
-import { TheHeadbar } from "../TheHeadbar";
-import { TheSidebar } from "../TheSidebar";
+import { TheContent } from "./TheContent";
+import { TheHeadbar } from "./TheHeadbar";
+import { TheSidebar } from "./TheSidebar";
+
+import "../../styles/TheLayout.css";
 
 
 export const TheLayout = () => {
@@ -11,7 +13,7 @@ export const TheLayout = () => {
   return (
     <div className={"the-layout"}>
       <TheHeadbar showSideMenu={showSideMenu}/>
-      <TheSidebar showSideMenu={showSideMenu} setShowSideMenu={setShowSideMenu}/>
+      {/*<TheSidebar showSideMenu={showSideMenu} setShowSideMenu={setShowSideMenu}/>*/}
       <TheContent/>
     </div>
   );

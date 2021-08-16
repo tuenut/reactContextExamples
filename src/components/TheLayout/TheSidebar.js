@@ -2,9 +2,7 @@ import React from "react";
 
 import { Link, useLocation } from "react-router-dom";
 
-import navigation from "./navigation";
-
-import "./styles.css";
+import sidenav from "./parts/sidenav";
 
 
 const SidebarNavLink = ({label, linkTo, brand}) => {
@@ -43,7 +41,7 @@ export const TheSidebar = () => {
   return (
     <nav className={"sidebar"}>
       <ul>
-        {navigation.map((navItem) => (
+        {sidenav.map((navItem) => (
           <SidebarNavLinkItem {...navItem}/>
         ))}
       </ul>

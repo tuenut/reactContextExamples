@@ -1,0 +1,104 @@
+main {
+  /* Indent from sidebar, should use the same margin as width in sidebar. */
+  margin-left: 13rem;
+  padding-left: 1rem;
+  /* Indent from headbar, should use the same margin as height in headbar. */
+  margin-top: 3rem;
+  padding-top: 1rem;
+}
+
+nav.headbar {
+  overflow: hidden;
+  background-color: #333;
+  /* Make it fixes, means ignore page scrolling.  */
+  position: fixed;
+  top: 0;
+  /* Sets height, use that value in content margin-top */
+  width: 100%;
+  height: 3rem;
+}
+
+nav.headbar a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  /*padding: 0.9rem;*/
+  text-decoration: none;
+  font-size: 17px;
+}
+
+nav.headbar a.headbar-nav-brand {
+  background-color: #2196F3;
+  width: 13rem;
+}
+
+nav.headbar a.headbar-nav-brand:hover {
+  background-color: #69bbf3;
+}
+
+nav.headbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+nav.headbar a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+nav.headbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav.headbar ul li {
+  height: 100%;
+}
+
+nav.sidebar {
+  background-color: #111;
+  overflow-x: hidden;
+  z-index: 1;
+  /* Make it fixes, means ignore page scrolling.  */
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* Set sizes. Use width as margin-left for content. */
+  height: 100%;
+  width: 13rem;
+  /* Indent from headbar, should use the same margin as height in headbar. */
+  margin-top: 3rem;
+}
+
+nav.sidebar a {
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+  display: block;
+}
+
+nav.sidebar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+nav.sidebar a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+nav.sidebar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav.sidebar .sidebar-header {
+  font-weight: bold;
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+  display: block;
+}

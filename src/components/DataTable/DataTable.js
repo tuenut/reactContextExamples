@@ -5,6 +5,8 @@ import {
   useFiltersContext
 } from "./FiltersContext";
 
+import "../../styles/DataTable.css";
+
 
 const TableHead = ({fields = []}) => {
 
