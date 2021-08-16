@@ -2,3 +2,41 @@
 body {
   margin: 0;
 }
+
+section.explanation-section {
+}
+
+.btn {
+  padding: .3rem .4rem .3rem .4rem;
+  border: 2px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.btn-danger {
+  background-color: #ee6f69;
+  border-color: firebrick;
+  color: #111111;
+}
+
+.btn-success {
+  background-color: lightgreen;
+  border-color: darkgreen;
+  color: #111111;
+}
+
+.btn-light {
+  background-color: lightblue;
+  border-color: #657D87;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
+}
+
+.grid-col-1 {
+
+}

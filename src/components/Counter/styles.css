@@ -1,0 +1,36 @@
+fieldset.counter-container {
+  border: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+fieldset.counter-container > * {
+  margin: 0.3rem;
+}
+
+.counter-display {
+  display: flex;
+  flex-direction: column;
+}
+
+.counter-label {
+  text-align: center;
+}
+
+.counter-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.counter-controls > * {
+  margin-right: 0.3rem;
+  margin-left: 0.3rem;
+}
+
+.counter-controls > *:first-child {
+  margin-left: 0;
+}
+
+.counter-controls > *:last-child {
+  margin-right: 0;
+}

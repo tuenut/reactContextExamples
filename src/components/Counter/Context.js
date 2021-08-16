@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const createDefaultState = (defaultValue) => ({
   counter: defaultValue || 0
 });
@@ -9,16 +10,16 @@ const DECREMENT_COUNTER = "DECREMENT_COUNTER";
 const SET_COUNTER_TO = "SET_COUNTER_TO";
 const RESET_COUNTER = "RESET_COUNTER";
 
-export const incrementCounter = () => ({ type: INCREMENT_COUNTER });
-export const decrementCounter = () => ({ type: DECREMENT_COUNTER });
+export const incrementCounter = () => ({type: INCREMENT_COUNTER});
+export const decrementCounter = () => ({type: DECREMENT_COUNTER});
 export const setCounterTo = (value) => ({
   type: SET_COUNTER_TO,
   payload: value
 });
-export const resetCounter = () => ({ type: RESET_COUNTER });
+export const resetCounter = () => ({type: RESET_COUNTER});
 
 const reducer = (state, action) => {
-  switch (action.type) {
+  switch ( action.type ) {
     case INCREMENT_COUNTER:
       return {
         ...state,
@@ -32,9 +33,17 @@ const reducer = (state, action) => {
       };
 
     case SET_COUNTER_TO:
+      let newValue;
+
+      try {
+        newValue = parseInt(action.payload);
+      } catch ( e ) {
+        return state;
+      }
+
       return {
         ...state,
-        counter: parseInt(action.payload)
+        counter: newValue
       };
 
     case RESET_COUNTER:
@@ -48,22 +57,23 @@ const reducer = (state, action) => {
   }
 };
 
-const Context = React.createContext();
+const CounterContext = React.createContext();
 
-export const ContextProvider = (props) => {
-  const [state, dispatch] = React.useReducer(
-    reducer,
-    createDefaultState(props.defaultCounter)
-  );
 
-  const value = React.useMemo(() => [state, dispatch], [state]);
+export const useCounter = () => React.useContext(CounterContext);
 
-  return <Context.Provider value={value} {...props} />;
-};
+export const withCounterContext = (Component) =>
+  ({defaultCounter = 0, ...props}) => {
+    const [state, dispatch] = React.useReducer(
+      reducer,
+      createDefaultState(defaultCounter)
+    );
 
-export const useContext = () => React.useContext(Context);
-export const withContext = (Component) => ({ defaultCounter, ...props }) => (
-  <ContextProvider defaultCounter={defaultCounter}>
-    <Component {...props} />
-  </ContextProvider>
-);
+    const value = React.useMemo(() => [state, dispatch], [state]);
+
+    return (
+      <CounterContext.Provider value={value}>
+        <Component {...props} />
+      </CounterContext.Provider>
+    );
+  };
