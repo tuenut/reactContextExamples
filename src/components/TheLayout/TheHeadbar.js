@@ -2,61 +2,32 @@ import React from "react";
 
 import { Link, useLocation } from "react-router-dom";
 
-import {
-  HOME_PATH,
-  ABOUT_PATH,
-  CONTACTS_PATH
-} from "../../settings/routePaths";
+import { headnav } from "./parts/headnav";
+import { HOME_PATH } from "../../settings/routePaths";
 
 
-const headbarNavigation = [
-  {
-    label: "TU Examples",
-    linkTo: HOME_PATH,
-    brand: true,
-    classes: ""
-  },
-  {
-    label: "About",
-    linkTo: ABOUT_PATH
-  },
-  {
-    label: "Contact",
-    linkTo: CONTACTS_PATH
-  }
-];
-
-
-const HeadbarNavLink = ({label, linkTo, brand, classes}) => {
+const HeadbarNavLinkItem = ({label, linkTo, brand, classes}) => {
   const location = useLocation();
 
-  let linkClasses = ["headbar-nav-link"];
+  let listItemClasses = ["headbar-nav-item"];
 
   if ( brand ) {
-    linkClasses.push("headbar-nav-brand");
+    listItemClasses = ["headbar-nav-brand", "accent-color"];
   }
 
-  if ( location.pathname === linkTo ) {
-    linkClasses.push("headbar-nav-link-active")
+  if ( location.pathname === linkTo && linkTo !== HOME_PATH ) {
+    listItemClasses.push("headbar-nav-item-active")
   }
 
-  if (classes) {
-    linkClasses.push(classes);
+  if ( classes ) {
+    listItemClasses.push(classes);
   }
-
-  return (
-    <Link className={linkClasses.join(" ")} to={linkTo}>
-      {label}
-    </Link>
-  );
-};
-
-const HeadbarNavLinkItem = (props) => {
-  let listItemClasses = ["headbar-nav-item"];
 
   return (
     <li className={listItemClasses.join(" ")}>
-      <HeadbarNavLink {...props}/>
+      <Link to={linkTo}>
+        {label}
+      </Link>
     </li>
   );
 };
@@ -64,12 +35,20 @@ const HeadbarNavLinkItem = (props) => {
 
 export const TheHeadbar = () => {
   return (
-    <nav className={"headbar"}>
+    <nav className={"headbar dark-primary-color"}>
       <ul>
-        {headbarNavigation.map((navItem) => (
+        {headnav.map((navItem) => (
           <HeadbarNavLinkItem {...navItem}/>
         ))}
       </ul>
+      {/*<div>*/}
+        <form>
+          <input className={"headbar-search"}/>
+          <button>
+            Search
+          </button>
+        </form>
+      {/*</div>*/}
     </nav>
   );
 };
