@@ -5,7 +5,7 @@ import { Counter } from "./Counter";
 
 export const CountersExample = () => (
   <>
-    <section className={"grid-container"}>
+    <section className={"example-section counter-example"}>
       <Counter
         label={"Default counter"}
         className={"grid-col-1"}

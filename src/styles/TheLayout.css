@@ -17,6 +17,8 @@ main {
   right: 0;
   transition: margin-left 300ms;
   width: 75%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 main.sidebar-collapsed {
