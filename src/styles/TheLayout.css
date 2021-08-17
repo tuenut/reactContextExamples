@@ -12,8 +12,7 @@
 main {
   /* Indent from sidebar, should use the same margin as width in sidebar. */
   margin: 3rem 1rem 1rem 13rem;
-  padding: 1rem;
-  padding-left: 4rem;
+  padding: 1rem 1rem 1rem 4rem;
   right: 0;
   transition: margin-left 300ms;
   width: 75%;

@@ -9,13 +9,17 @@ import "../../styles/DataTable.css";
 
 
 const TableHead = ({fields = []}) => {
+  const _fields = React.useMemo(
+    () => fields.map(f => f.label ? f.label : f),
+    [fields]
+  );
 
   return (
     <thead>
     <tr>
-      {fields.map((field, idx) => (
+      {_fields.map((field, idx) => (
         <th key={idx}>
-          {field.name || field}
+          {field}
         </th>
       ))}
     </tr>
@@ -24,12 +28,16 @@ const TableHead = ({fields = []}) => {
 };
 
 const TableBody = ({data = [], fields = []}) => {
+  const _fields = React.useMemo(
+    () => fields.map(f => f.field ? f.field : f),
+    [fields]
+  );
 
   return (
     <tbody>
     {data.map((dataItem, idx) => (
       <tr key={idx}>
-        {fields.map((field, idx) => (
+        {_fields.map((field, idx) => (
           <td key={idx}>
             {dataItem[field]}
           </td>

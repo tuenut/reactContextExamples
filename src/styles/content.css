@@ -1,12 +1,11 @@
-.explanation-section {
- margin-left: 1rem;
+section.explanation-section {
 }
 
-.explanation-section  p{
+section.explanation-section p {
   margin-left: 1rem;
 
 }
 
-.example-section {
+section.example-section {
 
 }

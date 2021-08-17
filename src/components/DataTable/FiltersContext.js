@@ -11,15 +11,15 @@ const SET_PAGE = "SET_PAGE";
 const SET_PAGE_SIZE = "SET_PAGE_SIZE";
 const CLEAR_FILTERS = "CLEAR_FILTERS";
 
-export const setPage = () => 
+export const setPage = () =>
   ({type: SET_PAGE});
-export const setPageSize = () => 
+export const setPageSize = () =>
   ({type: SET_PAGE_SIZE});
-export const setCounterTo = (value) => 
+export const setCounterTo = (value) =>
   ({type: CLEAR_FILTERS, payload: value});
 
 const filtersReducer = (state, action) => {
-  switch (action.type) {
+  switch ( action.type ) {
     case SET_PAGE:
       return ({
         ...state,
@@ -28,8 +28,8 @@ const filtersReducer = (state, action) => {
 
     case SET_PAGE_SIZE:
       return ({
-        ...state, 
-        counter: state.counter - 1 
+        ...state,
+        counter: state.counter - 1
       });
 
     case CLEAR_FILTERS:
@@ -39,7 +39,7 @@ const filtersReducer = (state, action) => {
       });
 
     default:
-      if (action.type.toLowerCase() in state) {
+      if ( action.type.toLowerCase() in state ) {
         return ({
           ...state,
           [action.type.toLowerCase()]: action.payload
@@ -48,18 +48,22 @@ const filtersReducer = (state, action) => {
         return state;
       }
   }
-}
-
+};
 
 const FiltersContext = React.createContext();
 
-export const FiltersContextProvider = (props) => {
-  const customFilters = props.filters 
-    ? Object.assign({}, ...props.filters.map((filter) => 
-        ({
-          [filter.field || filter]: filter.defaultValue || ""})
-      ))
-    : {};
+export const useFiltersContext = () => React.useContext(FiltersContext);
+
+export const withFiltersContext = (Component) => (props) => {
+  let customFilters = {};
+
+  if ( props.filters ) {
+    customFilters = Object.assign({},
+      ...props.filters.map((filter) => ({
+        [filter.field || filter]: filter.defaultValue || ""
+      }))
+    );
+  }
 
   const [state, dispatch] = React.useReducer(
     filtersReducer,
@@ -72,13 +76,8 @@ export const FiltersContextProvider = (props) => {
   );
 
   return (
-    <FiltersContext.Provider value={value} {...props}/>
+    <FiltersContext.Provider value={value}>
+      <Component {...props}/>
+    </FiltersContext.Provider>
   );
-}
-
-export const useFiltersContext = () => React.useContext(FiltersContext);
-export const withFiltersContext = (Component) => (props) => (
-  <FiltersContextProvider filters={props.filters}>
-    <Component {...props}/>
-  </FiltersContextProvider>
-);
+};
