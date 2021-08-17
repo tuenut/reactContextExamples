@@ -36,17 +36,19 @@ const SidebarNavLinkItem = (props) => {
 };
 
 
-export const TheSidebar = () => {
+export const TheSidebar = ({show, setShow}) => {
+  const classes = ["sidebar",];
+  if (!show) classes.push("sidebar-collapsed");
 
   return (
-    <nav className={"sidebar"}>
+    <nav className={classes.join(" ")}>
       <ul>
         {sidenav.map((navItem) => (
           <SidebarNavLinkItem {...navItem}/>
         ))}
       </ul>
 
-      <button>
+      <button onClick={() => setShow(!show)}>
         Collapse
       </button>
     </nav>

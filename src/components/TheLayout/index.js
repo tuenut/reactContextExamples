@@ -10,11 +10,21 @@ import "../../styles/TheLayout.css";
 export const TheLayout = () => {
   const [showSideMenu, setShowSideMenu] = React.useState(true);
 
+  const classes = [
+    "the-layout",
+    showSideMenu
+      ? "the-layout-sidebar-show"
+      : "the-layout-sidebar-collapse"
+  ].join(" ");
+
   return (
-    <div className={"the-layout"}>
+    <div className={classes}>
       <TheHeadbar showSideMenu={showSideMenu}/>
-      {/*<TheSidebar showSideMenu={showSideMenu} setShowSideMenu={setShowSideMenu}/>*/}
-      <TheContent/>
+      <TheSidebar
+        show={showSideMenu}
+        setShow={setShowSideMenu}
+      />
+      <TheContent className={!showSideMenu ? "sidebar-collapsed" : ""}/>
     </div>
   );
 };

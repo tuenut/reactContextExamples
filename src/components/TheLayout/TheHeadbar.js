@@ -41,14 +41,13 @@ export const TheHeadbar = () => {
           <HeadbarNavLinkItem {...navItem}/>
         ))}
       </ul>
-      {/*<div>*/}
-        <form>
-          <input className={"headbar-search"}/>
-          <button>
-            Search
-          </button>
-        </form>
-      {/*</div>*/}
+
+      <form className={"headbar-search"}>
+        <input className={"border-0"}/>
+        <button className={"btn br-0"}>
+          Search
+        </button>
+      </form>
     </nav>
   );
 };

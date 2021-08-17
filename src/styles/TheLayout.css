@@ -1,10 +1,26 @@
+.the-layout {
+}
+
+.the-layout-sidebar-show {
+  grid-template-columns: 2fr 5fr 1fr;
+}
+
+.the-layout-sidebar-collapse {
+  grid-template-columns: 1fr 3fr 1fr;
+}
+
 main {
   /* Indent from sidebar, should use the same margin as width in sidebar. */
-  margin-left: 13rem;
-  padding-left: 1rem;
-  /* Indent from headbar, should use the same margin as height in headbar. */
-  margin-top: 3rem;
-  padding-top: 1rem;
+  margin: 3rem 1rem 1rem 13rem;
+  padding: 1rem;
+  padding-left: 4rem;
+  right: 0;
+  transition: margin-left 300ms;
+  width: 75%;
+}
+
+main.sidebar-collapsed {
+  margin-left: 4rem
 }
 
 /*
@@ -25,6 +41,7 @@ nav.headbar {
   font-size: 17px;
   color: #FFFFFF;
   display: flex;
+  justify-content: space-between;
 }
 
 nav.headbar > * {
@@ -38,6 +55,7 @@ nav.headbar ul {
   list-style-type: none;
   /* Display children in a row. */
 }
+
 nav.headbar ul li {
   display: flex;
   padding: 0.3rem;
@@ -70,8 +88,8 @@ nav.headbar ul li a {
   text-decoration: none;
 }
 
-nav.headbar input.headbar-search {
-
+nav.headbar .headbar-search {
+  margin: 0.5rem 1rem;
 }
 
 /*
@@ -91,6 +109,10 @@ nav.sidebar {
   width: 13rem;
   /* Indent from headbar, should use the same margin as height in headbar. */
   margin-top: 3rem;
+  transition: width 300ms;
+}
+nav.sidebar-collapsed {
+  width: 4rem;
 }
 
 nav.sidebar a {

@@ -5,10 +5,12 @@ import { Switch, Route, useLocation, Redirect } from "react-router-dom";
 import routes from "../../settings/routes";
 import {HOME_PATH} from "../../settings/routePaths";
 
+import "../../styles/content.css";
+
 
 const TITLE = "Tuenut React Sandbox";
 
-export const TheContent = () => {
+export const TheContent = ({className}) => {
   const location = useLocation();
 
   /** There is setting page title due to route name from route config. */
@@ -23,7 +25,7 @@ export const TheContent = () => {
   }, [location]);
 
   return (
-    <main className={"content"}>
+    <main className={["content", className].join(" ")}>
       <Switch>
         {routes.map((route, idx) => (
           <Route key={idx} {...route} />

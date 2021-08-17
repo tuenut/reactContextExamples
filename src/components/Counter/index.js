@@ -16,6 +16,7 @@ export const CountersExample = () => (
         defaultCounter={42}
       />
     </section>
+
     <section className={"explanation-section"}>
       <header>
         <h3>
