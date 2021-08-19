@@ -2,6 +2,7 @@ import React from "react";
 
 import { Counter } from "./Counter";
 import { Explanation } from "../_lib";
+import { ExplanationText } from "./ExplanationText";
 
 
 export const CountersExample = () => (
@@ -19,15 +20,7 @@ export const CountersExample = () => (
     </section>
 
     <Explanation>
-      <p>
-        {
-          "There is example of usage two components which uses same " +
-          "contexts but states are separated and independent."
-        }
-      </p>
-      <p>
-        You can use each counter separately from other.
-      </p>
+      <ExplanationText/>
     </Explanation>
   </>
 );

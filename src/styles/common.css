@@ -20,9 +20,10 @@ pre {
   overflow-x: auto;
   background: aliceblue;
   color: #212121;
-  padding: 15px;
-  font-size: 13pt;
-  tab-size: 4;
+  padding: 1rem;
+  font-size: 0.9rem;
+  tab-size: 2;
+  max-width: calc(80ch + 2rem);
 }
 
 pre::-webkit-scrollbar {
@@ -32,4 +33,10 @@ pre::-webkit-scrollbar {
 pre::-webkit-scrollbar-thumb {
   background: #eee;
   border-radius: 5px;
+}
+
+code {
+  padding: 0 0.3rem;
+  color: firebrick;
+  background: #eee;
 }

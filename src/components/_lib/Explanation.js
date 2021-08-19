@@ -11,9 +11,8 @@ export const Explanation = ({children}) => {
         </h3>
       </header>
 
-      <article>
-        {children}
-      </article>
+      {children}
+
     </section>
   );
 };
